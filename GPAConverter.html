@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html style="font-size: 12px;font-family: Roboto, Arial, sans-serif;" lang="ko">
+<head>
+  <title>GPA Converter - For 9 Rank System(GPA환산기)</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="./style.css">
+  <!-- <link rel="stylesheet" href="https://showcases.yalco.kr/html-css/01-06/table.css"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+  <script>
+  var popupWidth = 400;
+  var popupHeight = 500;
+  var popupX = (window.screen.width / 2) - (popupWidth / 2);
+  var popupY= (window.screen.height / 2) - (popupHeight / 2);
+  var index = 6;
+  function cal(){
+    var M_4_0 = document.getElementById("M_4_0");
+    var M_4_3 = document.getElementById("M_4_3");
+    var M_4_5 = document.getElementById("M_4_5");
+    var M_5_0 = document.getElementById("M_5_0");
+    var Result;
+    var TotalCredit;
+    var TotalGrade;
+
+    var v1_1 = document.getElementById("v1_1").value;
+    var v1_2 = Number(document.getElementById("v1_2").value);
+    var v1_3 = Number(document.getElementById("v1_3").value);
+    if(M_4_0.checked){
+    v1_3 = EvaluateGrade4_0(v1_3);
+    }if(M_4_3.checked){
+    v1_3 = EvaluateGrade4_3(v1_3);
+    }if(M_4_5.checked){
+    v1_3 = EvaluateGrade4_5(v1_3);
+    }if(M_5_0.checked){
+    v1_3 = EvaluateGrade5_0(v1_3);
+    }
+    if(v1_3 == 6){
+      v1_2 = 0;
+    }
+    var v2_1 = document.getElementById("v2_1").value;
+    var v2_2 = Number(document.getElementById("v2_2").value);
+    var v2_3 = Number(document.getElementById("v2_3").value);
+    if(M_4_0.checked){
+    v2_3 = EvaluateGrade4_0(v2_3);
+    }if(M_4_3.checked){
+    v2_3 = EvaluateGrade4_3(v2_3);
+    }if(M_4_5.checked){
+    v2_3 = EvaluateGrade4_5(v2_3);
+    }if(M_5_0.checked){
+    v2_3 = EvaluateGrade5_0(v2_3);
+    }
+    if(v2_3 == 6){
+      v2_2 = 0;
+    }
+    var v3_1 = document.getElementById("v3_1").value;
+    var v3_2 = Number(document.getElementById("v3_2").value);
+    var v3_3 = Number(document.getElementById("v3_3").value);
+    if(M_4_0.checked){
+    v3_3 = EvaluateGrade4_0(v3_3);
+    }if(M_4_3.checked){
+    v3_3 = EvaluateGrade4_3(v3_3);
+    }if(M_4_5.checked){
+    v3_3 = EvaluateGrade4_5(v3_3);
+    }if(M_5_0.checked){
+    v3_3 = EvaluateGrade5_0(v3_3);
+    }
+    if(v3_3 == 6){
+      v3_2 = 0;
+    }
+    var v4_1 = document.getElementById("v4_1").value;
+    var v4_2 = Number(document.getElementById("v4_2").value);
+    var v4_3 = Number(document.getElementById("v4_3").value);
+    if(M_4_0.checked){
+    v4_3 = EvaluateGrade4_0(v4_3);
+    }if(M_4_3.checked){
+    v4_3 = EvaluateGrade4_3(v4_3);
+    }if(M_4_5.checked){
+    v4_3 = EvaluateGrade4_5(v4_3);
+    }if(M_5_0.checked){
+    v4_3 = EvaluateGrade5_0(v4_3);
+    }
+    if(v4_3 == 6){
+      v4_2 = 0;
+    }
+    var v5_1 = document.getElementById("v5_1").value;
+    var v5_2 = Number(document.getElementById("v5_2").value);
+    var v5_3 = Number(document.getElementById("v5_3").value);
+    if(M_4_0.checked){
+    v5_3 = EvaluateGrade4_0(v5_3);
+    }if(M_4_3.checked){
+    v5_3 = EvaluateGrade4_3(v5_3);
+    }if(M_4_5.checked){
+    v5_3 = EvaluateGrade4_5(v5_3);
+    }if(M_5_0.checked){
+    v5_3 = EvaluateGrade5_0(v5_3);
+    }
+    if(v5_3 == 6){
+      v5_2 = 0;
+    }
+    if (index == 6){
+    }if (index == 7){
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    }if (index == 8){
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    var v7_1 = document.getElementById("v7_1").value;
+    var v7_2 = Number(document.getElementById("v7_2").value);
+    var v7_3 = Number(document.getElementById("v7_3").value);
+    if(M_4_0.checked){
+    v7_3 = EvaluateGrade4_0(v7_3);
+    }if(M_4_3.checked){
+    v7_3 = EvaluateGrade4_3(v7_3);
+    }if(M_4_5.checked){
+    v7_3 = EvaluateGrade4_5(v7_3);
+    }if(M_5_0.checked){
+    v7_3 = EvaluateGrade5_0(v7_3);
+    }
+    if(v7_3 == 6){
+      v7_2 = 0;
+    }
+    }if (index == 9){
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    var v7_1 = document.getElementById("v7_1").value;
+    var v7_2 = Number(document.getElementById("v7_2").value);
+    var v7_3 = Number(document.getElementById("v7_3").value);
+    if(M_4_0.checked){
+    v7_3 = EvaluateGrade4_0(v7_3);
+    }if(M_4_3.checked){
+    v7_3 = EvaluateGrade4_3(v7_3);
+    }if(M_4_5.checked){
+    v7_3 = EvaluateGrade4_5(v7_3);
+    }if(M_5_0.checked){
+    v7_3 = EvaluateGrade5_0(v7_3);
+    }
+    if(v7_3 == 6){
+      v7_2 = 0;
+    }
+    
+    var v8_1 = document.getElementById("v8_1").value;
+    var v8_2 = Number(document.getElementById("v8_2").value);
+    var v8_3 = Number(document.getElementById("v8_3").value);
+    if(M_4_0.checked){
+    v8_3 = EvaluateGrade4_0(v8_3);
+    }if(M_4_3.checked){
+    v8_3 = EvaluateGrade4_3(v8_3);
+    }if(M_4_5.checked){
+    v8_3 = EvaluateGrade4_5(v8_3);
+    }if(M_5_0.checked){
+    v8_3 = EvaluateGrade5_0(v8_3);
+    }
+    if(v8_3 == 6){
+      v8_2 = 0;
+    }
+    }if (index == 10) {
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    var v7_1 = document.getElementById("v7_1").value;
+    var v7_2 = Number(document.getElementById("v7_2").value);
+    var v7_3 = Number(document.getElementById("v7_3").value);
+    if(M_4_0.checked){
+    v7_3 = EvaluateGrade4_0(v7_3);
+    }if(M_4_3.checked){
+    v7_3 = EvaluateGrade4_3(v7_3);
+    }if(M_4_5.checked){
+    v7_3 = EvaluateGrade4_5(v7_3);
+    }if(M_5_0.checked){
+    v7_3 = EvaluateGrade5_0(v7_3);
+    }
+    if(v7_3 == 6){
+      v7_2 = 0;
+    }
+    
+    var v8_1 = document.getElementById("v8_1").value;
+    var v8_2 = Number(document.getElementById("v8_2").value);
+    var v8_3 = Number(document.getElementById("v8_3").value);
+    if(M_4_0.checked){
+    v8_3 = EvaluateGrade4_0(v8_3);
+    }if(M_4_3.checked){
+    v8_3 = EvaluateGrade4_3(v8_3);
+    }if(M_4_5.checked){
+    v8_3 = EvaluateGrade4_5(v8_3);
+    }if(M_5_0.checked){
+    v8_3 = EvaluateGrade5_0(v8_3);
+    }
+    if(v8_3 == 6){
+      v8_2 = 0;
+    }
+    var v9_1 = document.getElementById("v9_1").value;
+    var v9_2 = Number(document.getElementById("v9_2").value);
+    var v9_3 = Number(document.getElementById("v9_3").value);
+    if(M_4_0.checked){
+    v9_3 = EvaluateGrade4_0(v9_3);
+    }if(M_4_3.checked){
+    v9_3 = EvaluateGrade4_3(v9_3);
+    }if(M_4_5.checked){
+    v9_3 = EvaluateGrade4_5(v9_3);
+    }if(M_5_0.checked){
+    v9_3 = EvaluateGrade5_0(v9_3);
+    }
+    if(v9_3 == 6){
+      v9_2 = 0;
+    }
+    }if (index == 11) {
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    var v7_1 = document.getElementById("v7_1").value;
+    var v7_2 = Number(document.getElementById("v7_2").value);
+    var v7_3 = Number(document.getElementById("v7_3").value);
+    if(M_4_0.checked){
+    v7_3 = EvaluateGrade4_0(v7_3);
+    }if(M_4_3.checked){
+    v7_3 = EvaluateGrade4_3(v7_3);
+    }if(M_4_5.checked){
+    v7_3 = EvaluateGrade4_5(v7_3);
+    }if(M_5_0.checked){
+    v7_3 = EvaluateGrade5_0(v7_3);
+    }
+    if(v7_3 == 6){
+      v7_2 = 0;
+    }
+    
+    var v8_1 = document.getElementById("v8_1").value;
+    var v8_2 = Number(document.getElementById("v8_2").value);
+    var v8_3 = Number(document.getElementById("v8_3").value);
+    if(M_4_0.checked){
+    v8_3 = EvaluateGrade4_0(v8_3);
+    }if(M_4_3.checked){
+    v8_3 = EvaluateGrade4_3(v8_3);
+    }if(M_4_5.checked){
+    v8_3 = EvaluateGrade4_5(v8_3);
+    }if(M_5_0.checked){
+    v8_3 = EvaluateGrade5_0(v8_3);
+    }
+    if(v8_3 == 6){
+      v8_2 = 0;
+    }
+    var v9_1 = document.getElementById("v9_1").value;
+    var v9_2 = Number(document.getElementById("v9_2").value);
+    var v9_3 = Number(document.getElementById("v9_3").value);
+    if(M_4_0.checked){
+    v9_3 = EvaluateGrade4_0(v9_3);
+    }if(M_4_3.checked){
+    v9_3 = EvaluateGrade4_3(v9_3);
+    }if(M_4_5.checked){
+    v9_3 = EvaluateGrade4_5(v9_3);
+    }if(M_5_0.checked){
+    v9_3 = EvaluateGrade5_0(v9_3);
+    }
+    if(v9_3 == 6){
+      v9_2 = 0;
+    }
+    var v10_1 = document.getElementById("v10_1").value;
+    var v10_2 = Number(document.getElementById("v10_2").value);
+    var v10_3 = Number(document.getElementById("v10_3").value);
+    if(M_4_0.checked){
+    v10_3 = EvaluateGrade4_0(v10_3);
+    }if(M_4_3.checked){
+    v10_3 = EvaluateGrade4_3(v10_3);
+    }if(M_4_5.checked){
+    v10_3 = EvaluateGrade4_5(v10_3);
+    }if(M_5_0.checked){
+    v10_3 = EvaluateGrade5_0(v10_3);
+    }
+    if(v10_3 == 6){
+      v10_2 = 0;
+    }
+    }if (index == 12) {
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    var v7_1 = document.getElementById("v7_1").value;
+    var v7_2 = Number(document.getElementById("v7_2").value);
+    var v7_3 = Number(document.getElementById("v7_3").value);
+    if(M_4_0.checked){
+    v7_3 = EvaluateGrade4_0(v7_3);
+    }if(M_4_3.checked){
+    v7_3 = EvaluateGrade4_3(v7_3);
+    }if(M_4_5.checked){
+    v7_3 = EvaluateGrade4_5(v7_3);
+    }if(M_5_0.checked){
+    v7_3 = EvaluateGrade5_0(v7_3);
+    }
+    if(v7_3 == 6){
+      v7_2 = 0;
+    }
+    
+    var v8_1 = document.getElementById("v8_1").value;
+    var v8_2 = Number(document.getElementById("v8_2").value);
+    var v8_3 = Number(document.getElementById("v8_3").value);
+    if(M_4_0.checked){
+    v8_3 = EvaluateGrade4_0(v8_3);
+    }if(M_4_3.checked){
+    v8_3 = EvaluateGrade4_3(v8_3);
+    }if(M_4_5.checked){
+    v8_3 = EvaluateGrade4_5(v8_3);
+    }if(M_5_0.checked){
+    v8_3 = EvaluateGrade5_0(v8_3);
+    }
+    if(v8_3 == 6){
+      v8_2 = 0;
+    }
+    var v9_1 = document.getElementById("v9_1").value;
+    var v9_2 = Number(document.getElementById("v9_2").value);
+    var v9_3 = Number(document.getElementById("v9_3").value);
+    if(M_4_0.checked){
+    v9_3 = EvaluateGrade4_0(v9_3);
+    }if(M_4_3.checked){
+    v9_3 = EvaluateGrade4_3(v9_3);
+    }if(M_4_5.checked){
+    v9_3 = EvaluateGrade4_5(v9_3);
+    }if(M_5_0.checked){
+    v9_3 = EvaluateGrade5_0(v9_3);
+    }
+    if(v9_3 == 6){
+      v9_2 = 0;
+    }
+    var v10_1 = document.getElementById("v10_1").value;
+    var v10_2 = Number(document.getElementById("v10_2").value);
+    var v10_3 = Number(document.getElementById("v10_3").value);
+    if(M_4_0.checked){
+    v10_3 = EvaluateGrade4_0(v10_3);
+    }if(M_4_3.checked){
+    v10_3 = EvaluateGrade4_3(v10_3);
+    }if(M_4_5.checked){
+    v10_3 = EvaluateGrade4_5(v10_3);
+    }if(M_5_0.checked){
+    v10_3 = EvaluateGrade5_0(v10_3);
+    }
+    if(v10_3 == 6){
+      v10_2 = 0;
+    }var v11_1 = document.getElementById("v11_1").value;
+    var v11_2 = Number(document.getElementById("v11_2").value);
+    var v11_3 = Number(document.getElementById("v11_3").value);
+    if(M_4_0.checked){
+    v11_3 = EvaluateGrade4_0(v11_3);
+    }if(M_4_3.checked){
+    v11_3 = EvaluateGrade4_3(v11_3);
+    }if(M_4_5.checked){
+    v11_3 = EvaluateGrade4_5(v11_3);
+    }if(M_5_0.checked){
+    v11_3 = EvaluateGrade5_0(v11_3);
+    }
+    if(v11_3 == 6){
+      v11_2 = 0;
+    }
+    }if (index == 13) {
+    var v6_1 = document.getElementById("v6_1").value;
+    var v6_2 = Number(document.getElementById("v6_2").value);
+    var v6_3 = Number(document.getElementById("v6_3").value);
+    if(M_4_0.checked){
+    v6_3 = EvaluateGrade4_0(v6_3);
+    }if(M_4_3.checked){
+    v6_3 = EvaluateGrade4_3(v6_3);
+    }if(M_4_5.checked){
+    v6_3 = EvaluateGrade4_5(v6_3);
+    }if(M_5_0.checked){
+    v6_3 = EvaluateGrade5_0(v6_3);
+    }
+    if(v6_3 == 6){
+      v6_2 = 0;
+    }
+    var v7_1 = document.getElementById("v7_1").value;
+    var v7_2 = Number(document.getElementById("v7_2").value);
+    var v7_3 = Number(document.getElementById("v7_3").value);
+    if(M_4_0.checked){
+    v7_3 = EvaluateGrade4_0(v7_3);
+    }if(M_4_3.checked){
+    v7_3 = EvaluateGrade4_3(v7_3);
+    }if(M_4_5.checked){
+    v7_3 = EvaluateGrade4_5(v7_3);
+    }if(M_5_0.checked){
+    v7_3 = EvaluateGrade5_0(v7_3);
+    }
+    if(v7_3 == 6){
+      v7_2 = 0;
+    }
+    
+    var v8_1 = document.getElementById("v8_1").value;
+    var v8_2 = Number(document.getElementById("v8_2").value);
+    var v8_3 = Number(document.getElementById("v8_3").value);
+    if(M_4_0.checked){
+    v8_3 = EvaluateGrade4_0(v8_3);
+    }if(M_4_3.checked){
+    v8_3 = EvaluateGrade4_3(v8_3);
+    }if(M_4_5.checked){
+    v8_3 = EvaluateGrade4_5(v8_3);
+    }if(M_5_0.checked){
+    v8_3 = EvaluateGrade5_0(v8_3);
+    }
+    if(v8_3 == 6){
+      v8_2 = 0;
+    }
+    var v9_1 = document.getElementById("v9_1").value;
+    var v9_2 = Number(document.getElementById("v9_2").value);
+    var v9_3 = Number(document.getElementById("v9_3").value);
+    if(M_4_0.checked){
+    v9_3 = EvaluateGrade4_0(v9_3);
+    }if(M_4_3.checked){
+    v9_3 = EvaluateGrade4_3(v9_3);
+    }if(M_4_5.checked){
+    v9_3 = EvaluateGrade4_5(v9_3);
+    }if(M_5_0.checked){
+    v9_3 = EvaluateGrade5_0(v9_3);
+    }
+    if(v9_3 == 6){
+      v9_2 = 0;
+    }
+    var v10_1 = document.getElementById("v10_1").value;
+    var v10_2 = Number(document.getElementById("v10_2").value);
+    var v10_3 = Number(document.getElementById("v10_3").value);
+    if(M_4_0.checked){
+    v10_3 = EvaluateGrade4_0(v10_3);
+    }if(M_4_3.checked){
+    v10_3 = EvaluateGrade4_3(v10_3);
+    }if(M_4_5.checked){
+    v10_3 = EvaluateGrade4_5(v10_3);
+    }if(M_5_0.checked){
+    v10_3 = EvaluateGrade5_0(v10_3);
+    }
+    if(v10_3 == 6){
+      v10_2 = 0;
+    }
+    var v11_1 = document.getElementById("v11_1").value;
+    var v11_2 = Number(document.getElementById("v11_2").value);
+    var v11_3 = Number(document.getElementById("v11_3").value);
+    if(M_4_0.checked){
+    v11_3 = EvaluateGrade4_0(v11_3);
+    }if(M_4_3.checked){
+    v11_3 = EvaluateGrade4_3(v11_3);
+    }if(M_4_5.checked){
+    v11_3 = EvaluateGrade4_5(v11_3);
+    }if(M_5_0.checked){
+    v11_3 = EvaluateGrade5_0(v11_3);
+    }
+    if(v11_3 == 6){
+      v11_2 = 0;
+    }
+    var v12_1 = document.getElementById("v12_1").value;
+    var v12_2 = Number(document.getElementById("v12_2").value);
+    var v12_3 = Number(document.getElementById("v12_3").value);
+    if(M_4_0.checked){
+    v12_3 = EvaluateGrade4_0(v12_3);
+    }if(M_4_3.checked){
+    v12_3 = EvaluateGrade4_3(v12_3);
+    }if(M_4_5.checked){
+    v12_3 = EvaluateGrade4_5(v12_3);
+    }if(M_5_0.checked){
+    v12_3 = EvaluateGrade5_0(v12_3);
+    }
+    if(v12_3 == 6){
+      v12_2 = 0;
+    }
+    }
+
+    TotalCredit = v1_2+v2_2+v3_2+v4_2+v5_2;
+    if (index == 7){
+      TotalCredit = TotalCredit + v6_2;
+    }else if (index == 8){
+      TotalCredit = TotalCredit + v6_2+v7_2;
+    }else if (index == 9){
+      TotalCredit = TotalCredit + v6_2+v7_2+v8_2;
+    }else if (index == 10){
+      TotalCredit = TotalCredit + v6_2+v7_2+v8_2+v9_2;
+    }else if (index == 11){
+      TotalCredit = TotalCredit + v6_2+v7_2+v8_2+v9_2+v10_2;
+    }else if (index == 12){
+      TotalCredit = TotalCredit + v6_2+v7_2+v8_2+v9_2+v10_2+v11_2;
+    }else if (index == 13){
+      TotalCredit = TotalCredit + v6_2+v7_2+v8_2+v9_2+v10_2+v11_2+v12_2;
+    }
+    TotalGrade = v1_2*v1_3+v2_2*v2_3+v3_2*v3_3+v4_2*v4_3+v5_2*v5_3;
+    if (index == 7){
+      TotalGrade = TotalGrade + v6_2*v6_3;
+    }else if (index == 8){
+      TotalGrade = TotalGrade + v6_2*v6_3+v7_2*v7_3;
+    }else if (index == 9){
+      TotalGrade = TotalGrade + v6_2*v6_3+v7_2*v7_3+v8_2*v8_3;
+    }else if (index == 10){
+      TotalGrade = TotalGrade + v6_2*v6_3+v7_2*v7_3+v8_2*v8_3+v9_2*v9_3;
+    }else if (index == 11){
+      TotalGrade = TotalGrade + v6_2*v6_3+v7_2*v7_3+v8_2*v8_3+v9_2*v9_3+v10_2*v10_3;
+    }else if (index == 12){
+      TotalGrade = TotalGrade + v6_2*v6_3+v7_2*v7_3+v8_2*v8_3+v9_2*v9_3+v10_2*v10_3+v11_2*v11_3;
+    }else if (index == 13){
+      TotalGrade = TotalGrade + v6_2*v6_3+v7_2*v7_3+v8_2*v8_3+v9_2*v9_3+v10_2*v10_3+v11_2*v11_3+v12_2*v12_3;
+    }
+    Result = (TotalGrade/TotalCredit).toFixed(2);
+    document.getElementById("Result").value = Result;
+    document.getElementById("TotalCredit").value = TotalCredit;
+  }
+
+  function reset(){
+    document.getElementById(type=number).value = "";    
+  }
+
+  function EvaluateGrade4_0(Num){
+    if(Num == 1){
+      return 4.0;
+    }if(Num == 2){
+      return 3.667;
+    }if(Num == 3){
+      return 3.333;
+    }if(Num == 4){
+      return 3.0;
+    }if(Num == 5){
+      return 2.333;
+    }if(Num == 6){
+      return 2.0;
+    }if(Num == 7){
+      return 1.333;
+    }if(Num == 8){
+      return 1.0;
+    }if(Num == 9){
+      return 0.0;
+    }else{
+      return 6;
+    }
+  }
+  function EvaluateGrade4_3(Num){
+    if(Num == 1){
+      return 4.3;
+    }if(Num == 2){
+      return 4.0;
+    }if(Num == 3){
+      return 3.333;
+    }if(Num == 4){
+      return 3.0;
+    }if(Num == 5){
+      return 2.333;
+    }if(Num == 6){
+      return 2.0;
+    }if(Num == 7){
+      return 1.333;
+    }if(Num == 8){
+      return 1.0;
+    }if(Num == 9){
+      return 0.0;
+    }else{
+      return 6;
+    }
+  }
+  function EvaluateGrade4_5(Num){
+    if(Num == 1){
+      return 4.5;
+    }if(Num == 2){
+      return 4.2;
+    }if(Num == 3){
+      return 3.8;
+    }if(Num == 4){
+      return 3.5;
+    }if(Num == 5){
+      return 2.8;
+    }if(Num == 6){
+      return 2.5;
+    }if(Num == 7){
+      return 1.8;
+    }if(Num == 8){
+      return 1.5;
+    }if(Num == 9){
+      return 0.0;
+    }else{
+      return 6;
+    }
+  }
+  function EvaluateGrade5_0(Num){
+    if(Num == 1){
+      return 5.0;
+    }if(Num == 2){
+      return 4.7;
+    }if(Num == 3){
+      return 4.3;
+    }if(Num == 4){
+      return 4.0;
+    }if(Num == 5){
+      return 3.3;
+    }if(Num == 6){
+      return 3.0;
+    }if(Num == 7){
+      return 2.3;
+    }if(Num == 8){
+      return 2.0;
+    }if(Num == 9){
+      return 0.0;
+    }else{
+      return 6;
+    }
+  }
+
+  function Add(){
+  if (index == 13) {
+    alert("Sorry. The maximum number of subject is twelve.")
+  } else {
+  var table = document.getElementById('Converter');
+  
+  const newRow = table.insertRow(6);
+  
+  var newCell1 = newRow.insertCell(0);
+  var t1=document.createElement("input");
+  t1.id = "v"+index+"_1";
+  t1.type = "text";
+  t1.placeholder = "Title(과목명)";
+  newCell1.appendChild(t1);
+  var newCell2 = newRow.insertCell(1);
+  var t2=document.createElement("input");
+  t2.id = "v"+index+"_2";
+  t2.type = "number";
+  t2.placeholder = "Credit(단위 수)";
+  t2.min = "0";
+  t2.max = "40";
+  newCell2.appendChild(t2);
+  var newCell3 = newRow.insertCell(2);
+  var t3=document.createElement("input");
+  t3.id = "v"+index+"_3";
+  t3.type = "number";
+  t3.placeholder = "Rank(등급)";
+  t3.min = "1";
+  t3.max = "9";
+  newCell3.appendChild(t3);
+  index++;
+  }
+}
+
+  </script>
+<meta name="google-site-verification" content="9JjF1J_y4qMNj9SOQWiCNbk2jkKE3Dz9T8Qh8J6_gGA" />
+</head>
+<body style="margin:0; padding:0">
+  <div class="container Box" >
+    <div class="LogoSpace">
+      GPA.com
+    </div>
+    <div class="Functions">
+      <div id="FContact">
+        <div>
+          <span class="span" style="padding:0px 30px 0px 30px"><input type="button" class="Function" value="About" onclick="window.scrollTo(200,1000)"></span>
+          <p class="arrow_box">Looking for Creator's Information?<br><br>I'll take you there if you click me!!😁</p>
+        </div>
+        <div>
+          <span class="span" style="padding:0px 30px 0px 30px"><input type="button" class="Function" value="Education"></span>
+          <p class="arrow_box">This content is just for design. Doesn't it look cool?😁</p>
+        </div>
+        <div>
+          <span class="span" style="padding:0px 30px 0px 30px"><input type="button" class="Function" value="Contact" onclick="window.scrollTo(200,1000)"></span>
+          <p class="arrow_box">The Contact Information is at the botton of this page.<br><br>I'll take you there if you click me!!😁</p>
+        </div>
+      </div>
+      <span style="padding:0px 0px 0px 20px"><img class="Search" src="./NicePng_magnifying-glass-png_207114.png" width="30px" height="30px" align="right"></span>
+    </div>
+  </div>
+  <div class="ConverterBody">
+  <div class="TitleBox">
+<h1><span class="TitleOfTitle GPA">GPA</span><span class="TitleOfTitle Converter">Converter.</span><br>for 9 Rank System(GPA 환산기 - 9등급제)</h1>
+</div>
+  <div class="converter">
+<table id="Converter" class="converterTable">
+  <caption></caption>
+  <thead>
+    <tr>
+      <th class="ConverterTH" scope="col">Subject Title(과목)</th>
+      <th class="ConverterTH" scope="col">Credit(단위)</th>
+      <th class="ConverterTH" scope="col">Grade(등급)</th>
+    </tr>
+  </thead>
+  <tbody id="my-tbody">
+    <tr>
+      <th class="ConverterTH" scope="row"><input type="text" id="v1_1" placeholder="Title(과목명)" autofocus></th>
+      <td><input type="number" id="v1_2" placeholder="Credit(단위 수)" min="0" max="40"></td>
+      <td><input type="number" id="v1_3" placeholder="Rank(등급)" min="1" max="9" boxwidth="10"></td>
+    </tr>
+    <tr>
+      <th class="ConverterTH" scope="row"><input type="text" id="v2_1" placeholder="Title(과목명)"></th>
+      <td><input type="number" id="v2_2" placeholder="Credit(단위 수)" min="0" max="40"></td>
+      <td><input type="number" id="v2_3" placeholder="Rank(등급)" min="1" max="9"></td>
+    </tr>
+    <tr>
+      <th class="ConverterTH" scope="row"><input type="text" id="v3_1" placeholder="Title(과목명)"></th>
+      <td><input type="number" id="v3_2" placeholder="Credit(단위 수)" min="0" max="40"></td>
+      <td><input type="number" id="v3_3" placeholder="Rank(등급)" min="1" max="9"></td>
+    </tr>
+    <tr>
+      <th class="ConverterTH" scope="row"><input type="text" id="v4_1" placeholder="Title(과목명)"></th>
+      <td><input type="number" id="v4_2" placeholder="Credit(단위 수)" min="0" max="40"></td>
+      <td><input type="number" id="v4_3" placeholder="Rank(등급)" min="1" max="9"></td>
+    </tr>
+    <tr>
+      <th class="ConverterTH" scope="row"><input type="text" id="v5_1" placeholder="Title(과목명)"></td>
+      <td><input type="number" id="v5_2" placeholder="Credit(단위 수)" min="0" max="40"></td>
+      <td><input type="number" id="v5_3" placeholder="Rank(등급)" min="1" max="9"></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Scale(만점)<br>
+        <input type="radio" name="Max" id="M_4_0" value="4_0" checked><lable for="M_4.0">4.0</lable>
+        <input type="radio" name="Max" id="M_4_3" value="4_3"><lable for="M_4.3">4.3</lable>
+        <input type="radio" name="Max" id="M_4_5" value="4_5"><lable for="M_4.5">4.5</lable>
+        <input type="radio" name="Max" id="M_5_0" value="5_0"><lable for="M_5.0">5.0</lable>
+        </th>
+      <td>
+        Total Credit(이수 시간)<br>
+        <input type="number" id="TotalCredit" placeholder="Total(총합)" disabled>
+      </td>
+      <td>
+        Average GPA(평균GPA)<br>
+        <input type="number" id="Result" placeholder="Avg GPA(평균)" disabled><br>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+<input type="button" value="Add Subject(과목 추가)" onclick="Add()">
+<input type="button" value="Calculate(계산하기)" onclick="cal()">
+<input type="button" value="Reset(초기화)" onclick="window.location.reload()">
+</div>
+</div>
+<br>
+<div class="Description">
+  <canvas dir="ltr" width="1386" height="1104" class="cursor_hit" role="figure" aria-label="3D View" tabindex="0" style="position: relative; z-index: 0; width: 693px; height: 552px;"></canvas>
+<form class="Caution">
+<input type="button" class="CautionBold Title" value="Caution(주의사항)">
+<br>
+<div class="EnglishDescription">
+If the subject did not give the the score as the form as nine rank system, just leave the Grade box empty.
+<br>
+Then we will not calculate the credit and grade of that class when deriving result.
+<br>
+<b class="CautionBold">The converting method varies by colleges. With the table below, you can see the method that this converter is providing.</b>
+</div>
+<div class="KoreanDescription">
+만약 과목의 점수가 9등급제의 형식으로 나오지 않았다면 등급 칸을 비워두세요.
+<br>
+그 수업의 단위와 점수는 계산에 포함되지 않습니다.
+<br>
+<b class="CautionBold">대학마다 GPA를 계산하는 방법이 다를 수 있습니다. 아래 표를 통해 이 계산기가 제공하는 환산법을 확인하십시오.</b>
+</div>
+</form>
+</div>
+<br>
+<form class="GradeTable" style="margin-bottom:50px">
+  <table class="GradeTable">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope ="col">ABC(성취도)</th>
+        <th scope ="col">4.0 Scale(4.0 만점)</th>
+        <th scope ="col">4.3 Scale(4.3 만점)</th>
+        <th scope ="col">4.5 Scale(4.5 만점)</th>
+        <th scope ="col">5.0 Scale(5.0 만점)</th>
+        <th scope ="col">percentile(백분위)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope ="row">1st Rank(1등급)</th>
+        <td>A+</td>
+        <td>4.0</td>
+        <td>4.3</td>
+        <td>4.5</td>
+        <td>5.0</td>
+        <td>top 4%</td>
+      </tr>
+      <tr>
+        <th scope ="row">2nd Rank(2등급)</th>
+        <td>A</td>
+        <td>3.667</td>
+        <td>4.0</td>
+        <td>4.2</td>
+        <td>4.7</td>
+        <td>top 11%</td>
+      </tr>
+      <tr>
+        <th scope ="row">3rd Rank(3등급)</th>
+        <td>B+</td>
+        <td>3.333</td>
+        <td>3.333</td>
+        <td>3.8</td>
+        <td>4.3</td>
+        <td>top 23%</td>
+      </tr>
+      <tr>
+        <th scope ="row">4th Rank(4등급)</th>
+        <td>B</th>
+        <td>3.0</td>
+        <td>3.0</td>
+        <td>3.5</td>
+        <td>4.0</td>
+        <td>top 40%</td>
+      </tr>
+      <tr>
+        <th scope ="row">5th Rank(5등급)</th>
+        <td>C+</td>
+        <td>2.333</td>
+        <td>2.333</td>
+        <td>2.8</td>
+        <td>3.3</td>
+        <td>top 60%</td>
+      </tr>
+      <tr>
+        <th scope ="row">6th Rank(6등급)</th>
+        <td>C</td>
+        <td>2.0</td>
+        <td>2.0</td>
+        <td>2.5</td>
+        <td>3.0</td>
+        <td>top 77%</td>
+      </tr>
+      <tr>
+        <th scope ="row">7th Rank(7등급)</th>
+        <td>D+</td>
+        <td>1.333</td>
+        <td>1.333</td>
+        <td>1.8</td>
+        <td>2.3</td>
+        <td>top 89%</td>
+      </tr>
+      <tr>
+        <th scope ="row">8th Rank(8등급)</th>
+        <td>D</td>
+        <td>1.0</td>
+        <td>1.0</td>
+        <td>1.5</td>
+        <td>2.0</td>
+        <td>top 94%</td>
+      </tr>
+      <tr>
+        <th scope ="row">9th Rank(9등급)</th>
+        <td>F</td>
+        <td>0.0</td>
+        <td>0.0</td>
+        <td>0.0</td>
+        <td>0.0</td>
+        <td>top 100%</td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<br>
+<form class="fieldset" style="padding:50px">
+  <div class="FieldDiv One">
+  <b class="FieldTitle">Creator(제작자)</b><br>
+  <b class="FieldName">Yaegun Kim(김예건)</b>
+  </div>
+  <div class="FieldDiv Two">
+  <div class="FieldDes UOS">
+    <div class="FieldDes img">
+    <button onclick="window.open('https\:\/\/english.uos.ac.kr/')">
+    <img class="Univ" src="./1200px-University_of_Seoul.png" width="50px" height="50px">
+    </button>
+    </div>
+    <div class="FieldDes Des">
+    <span class="FieldDes Subtitle">🇰🇷University of Seoul/서울시립대학교(2022)<br></span>
+    Philosophy major/철학과 전공<br><br>
+    </div>
+  </div>
+  <div class="FieldDes WSU">
+    <div class="FieldDes img">
+    <button onclick="window.open('https\:\/\/wsu.edu/')">
+    <img class="Univ" src="./washington-state-cougars-2-logo-png-transparent.png" width="50px" height="50px">
+    </button>
+    </div>
+    <div class="FieldDes Des">
+    <span class="FieldDes Subtitle">🇺🇸Washington State University/워싱턴주립대학교(2022-2026)<br></span>
+    Honors College/아너스 칼리지<br>
+    Computer Science major/컴퓨터과학과 전공<br>
+    Mathematics Minor/수학과 부전공<br>
+    </div>
+    </div>
+  <!-- <span class="FieldDes Kor">
+    <span class="FieldDes Subtitle">🇰🇷서울시립대학교(2022)<br></span>
+    철학과 22학번<br><br>
+    <span class="FieldDes Subtitle">🇺🇸워싱턴주립대학교(2022-2026)<br></span>
+    아너스 칼리지<br>
+    컴퓨터과학과 전공<br>
+    수학과 부전공 <br>
+  </span> -->
+  </div>
+</form>
+</body>
+<footer>
+   <span class="ContINFO Title">Contact Us</span>
+  <button class="ContINFO gateway" onclick="window.open('https\:\/\/www.instagram.com/ethan__4382/?hl=ko','window','width=400,height=500,left=700,top=300')">Via Instagram</button>
+  <button class="ContINFO gateway" onclick="window.open('https\:\/\/www.facebook.com/profile.php?id=100024794794399','window','width=400,height=500,left=700,top=300')">Via Facebook</button>
+  <button class="ContINFO gateway" onclick="window.open('https\:\/\/www.youtube.com/channel/UCwNae-iy2CwT5a-1NzFiUMQ','window','width=400,height=500,left=700,top=300')">Via Youtube</button>
+  <button class="ContINFO gateway" onclick="window.open('./Kakaotalk.html', 'window', 'width=400,height=500,left=700,top=300')">Via KakaoTalk</button>
+  <button class="ContINFO gateway" onclick="window.open('./Email.html','window','width=400,height=500,left=700,top=300')">Via e-mail</button>
+</footer>
+</html>
